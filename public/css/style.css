@@ -15824,6 +15824,10 @@ a.text-dark:hover, a.text-dark:focus {
   src: url("../../src/fonts/Poppins-Light.ttf");
 }
 
+header nav {
+  overflow: hidden;
+}
+
 header nav a {
   color: red;
 }
@@ -15906,6 +15910,14 @@ header div#shop p {
   width: 100%;
 }
 
+.sticky {
+  position: fixed !important;
+  top: 0 !important;
+  margin-top: 0px !important;
+  width: 100%;
+  z-index: 2225;
+}
+
 @media (min-width: 768px) {
   header nav {
     margin-top: 50px;
@@ -15930,6 +15942,48 @@ header div#shop p {
   header div#shop p {
     width: 50%;
   }
+}
+
+section#firstImgs div.card div.card-img-overlay {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: none !important;
+}
+
+section#firstImgs div.card div.card-img-overlay img, section#firstImgs div.card div.card-img-overlay .card-img, section#firstImgs div.card div.card-img-overlay .card, section#firstImgs div.card div.card-img-overlay .card-img-overlay, section#firstImgs div.card div.card-img-overlay .card-img {
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+  border-top-right-radius: 0% !important;
+  border-top-left-radius: 0% !important;
+}
+
+section#firstImgs div.card div.card-img-overlay h5 {
+  font-size: 2em;
+  font-family: 'pop-light';
+  color: white;
+  width: 100%;
+}
+
+section#firstImgs div.card div.card-img-overlay h5:after {
+  content: '';
+  border-top: 1px solid white;
+  width: 100%;
+  height: 1px;
+  display: block;
+}
+
+/*
+@include media-breakpoint-up(sm) { };
+@include media-breakpoint-up(md) {  };
+@include media-breakpoint-up(lg) {  };
+@include media-breakpoint-up(xl) {  };
+@include media-breakpoint-up(xxl) { };
+
+*/
+html {
+  scroll-behavior: smooth;
 }
 
 body {
