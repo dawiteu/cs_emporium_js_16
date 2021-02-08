@@ -15826,10 +15826,16 @@ a.text-dark:hover, a.text-dark:focus {
 
 header nav {
   overflow: hidden;
+  transition: width .4s;
 }
 
 header nav a {
   color: red;
+}
+
+header nav div.collapse ul.navbar-nav {
+  width: 100%;
+  background-color: red;
 }
 
 header nav div.collapse ul.navbar-nav li.nav-item {
@@ -15912,10 +15918,11 @@ header nav div.collapse ul.navbar-nav li.nav-item:last-child button {
     text-align: center;
   }
   header nav div.collapse {
+    background-color: #ccc;
     margin-top: 50px;
   }
   header nav div.collapse ul.navbar-nav {
-    width: 80%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -16090,7 +16097,7 @@ div#discover button {
 */
 footer {
   width: 100%;
-  background-color: #1f3858;
+  background-color: #343A40;
   color: white;
 }
 

@@ -1,11 +1,14 @@
 header{
     nav{
         overflow: hidden;
+        transition:width .4s;
         a{
             color:red;
         }
         div.collapse{
             ul.navbar-nav{
+                width:100%;
+                background-color: red;
                 li.nav-item{
                     text-transform: uppercase;
                     font-weight: bold;
@@ -95,9 +98,11 @@ header{
 
             }
             div.collapse{
+                // width:auto!important;
+                background-color: #ccc;
                 margin-top:50px; 
                 ul.navbar-nav{
-                    width:80%; 
+                    width:50%; 
                     margin-left: auto;
                     margin-right:auto;
 

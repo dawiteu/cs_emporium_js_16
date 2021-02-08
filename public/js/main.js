@@ -1,6 +1,7 @@
 const header = document.querySelector("header"); 
 const nav    = document.querySelector("nav");
 const navAbr = document.querySelector("nav>a.navbar-brand"); 
+const navDul = document.querySelector("nav>div.collapse>ul"); 
 const divShop=document.querySelector("div#shop");
 
 
@@ -152,11 +153,19 @@ function scrollFunction() {
     navAbr.style.backgroundColor="yellow";
     document.querySelector("nav").classList.add("sticky"); 
     divShop.style.marginTop="6rem!important"; 
+
+    navDul.style.marginLeft="0";
+    navDul.style.marginRight="0";
   } else {
+    navDul.style.marginLeft="auto";
+    navDul.style.marginRight="auto";
+
+    
+    // navDul.style.width="50%";
     header.style.paddingTop="5px";
     navAbr.style.backgroundColor="transparent";
-    document.querySelector("nav>a.navbar-brand").style.width="100%";
-    document.querySelector("nav").classList.remove("sticky"); 
+    navAbr.style.width="100%";
+    nav.classList.remove("sticky"); 
 
   }
 }
