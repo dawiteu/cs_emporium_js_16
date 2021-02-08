@@ -15980,13 +15980,14 @@ div#firstImgs div.card div.card-img-overlay h5:after {
   display: block;
 }
 
-div#recentProducts .card {
+div#recentProducts .card, #mycarouse .card {
+  border: none !important;
   border-radius: 0px;
   background-color: transparent;
   text-align: center;
 }
 
-div#recentProducts .card p.sale {
+div#recentProducts .card p.sale, #mycarouse .card p.sale {
   width: 100%;
   height: 100%;
   background-color: red;
@@ -15994,19 +15995,79 @@ div#recentProducts .card p.sale {
   text-align: center;
   text-transform: uppercase;
   border-radius: 50%;
+  padding: 5px;
 }
 
-div#recentProducts .card .card-title {
+div#recentProducts .card .card-title, #mycarouse .card .card-title {
   font-family: 'pop-light';
 }
 
-div#recentProducts .card .card-text {
+div#recentProducts .card .card-text, #mycarouse .card .card-text {
   color: red;
 }
 
-div#recentProducts .card .card-text span.oldp {
+div#recentProducts .card .card-text span.oldp, #mycarouse .card .card-text span.oldp {
   color: grey;
   text-decoration: line-through;
+}
+
+div#discover {
+  width: 100%;
+  min-height: 70vh;
+  max-height: 100vh;
+  background-image: url("../img/cta-bg.jpg");
+  background-position: center center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+div#discover h3 {
+  color: white;
+  text-transform: capitalize;
+  padding: 15px;
+  font-size: 3.5rem;
+}
+
+div#discover button {
+  display: block;
+}
+
+#mycarouse {
+  width: 100%;
+}
+
+#mycarouse div#slidesCarousel {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+#mycarouse div#slidesCarousel .carousitem {
+  flex: 0 0 auto;
+}
+
+#mycarouse div#carindicators {
+  display: flex;
+  width: 25%;
+  justify-content: center;
+  background-color: red;
+  margin: 0 auto;
+}
+
+#mycarouse div#carindicators div {
+  width: 100%;
+  background-color: lightblue;
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+}
+
+#mycarouse div#carindicators div:hover {
+  background-color: red;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
