@@ -15937,22 +15937,22 @@ div.container {
   margin-bottom: 5rem;
 }
 
-div#shop {
+#shop {
   width: 100%;
   height: 100%;
   background-image: url("../img/slider-1.jpg");
   background-size: contain;
-  background-position: center right;
+  background-position: 80%;
   background-repeat: no-repeat;
   background-color: #F3F3F3;
 }
 
-div#shop h4 {
+#shop h4 {
   font-family: 'pop';
   font-size: 4em;
 }
 
-div#shop p {
+#shop p {
   color: #7a7a7a;
   width: 100%;
 }
@@ -15985,6 +15985,19 @@ div#firstImgs div.card div.card-img-overlay h5:after {
   width: 100%;
   height: 1px;
   display: block;
+}
+
+div#recentProducts div.card-img {
+  overflow: hidden;
+}
+
+div#recentProducts div.card-img img {
+  transition: all .5s;
+}
+
+div#recentProducts div.card-img img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 div#recentProducts .card, #mycarouse .card {
@@ -16024,6 +16037,7 @@ div#discover {
   max-height: 100vh;
   background-image: url("../img/cta-bg.jpg");
   background-position: center center;
+  background-attachment: fixed;
   text-align: center;
   display: flex;
   align-items: center;
@@ -16082,7 +16096,7 @@ div#discover button {
 }
 
 @media (min-width: 768px) {
-  div#shop p {
+  #shop p {
     width: 50%;
   }
 }

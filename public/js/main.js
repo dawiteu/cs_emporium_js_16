@@ -2,7 +2,7 @@ const header = document.querySelector("header");
 const nav    = document.querySelector("nav");
 const navAbr = document.querySelector("nav>a.navbar-brand"); 
 const navDul = document.querySelector("nav>div.collapse>ul"); 
-const divShop=document.querySelector("div#shop");
+const divShop=document.querySelector("#shop");
 
 
 //carousel 

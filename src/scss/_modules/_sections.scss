@@ -3,12 +3,12 @@ div.container{
     margin-bottom:5rem;     
 }
 
-div#shop{ 
+#shop{ 
     width:100%;
     height:100%;
     background-image: url('../img/slider-1.jpg');
     background-size: contain;
-    background-position: center right;
+    background-position: 80%;
     background-repeat: no-repeat;
     background-color: #F3F3F3;
     h4{
@@ -52,7 +52,19 @@ div#firstImgs{
 
     }
 }
+div#recentProducts{
 
+    div.card-img{
+        overflow: hidden;
+        img{
+            transition: all .5s;
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.1);
+            }
+        }
+    }
+}
 div#recentProducts,#mycarouse{
     .card{ 
         border:none!important;
@@ -89,6 +101,7 @@ div#discover{
     max-height:100vh; 
     background-image: url("../img/cta-bg.jpg");
     background-position: center center;
+    background-attachment: fixed;
     text-align: center;
     display:flex;
     align-items:center;
@@ -151,7 +164,7 @@ div#discover{
 
 
 @include media-breakpoint-up(md) { 
-    div#shop{
+    #shop{
         p{
             width:50%;
         }
