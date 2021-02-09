@@ -480,29 +480,17 @@
         
     </footer>
 
-<!-- Modal -->
-<div class="modal fade" id="connectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="modal-title" id="connectModal">
-            <img src="../public/img/logo.png" alt="Emporium."/> 
-          </div>
-          <button type="button" class="close bg-danger" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+  <!-- mon modal -->
 
-            <!-- List group -->
-            <div class="list-group" id="myList" role="tablist">
-                <a class="btn btn-danger list-group-item-action active" data-toggle="list" href="#connection" role="tab">Connection</a>
-                <a class="btn btn-danger list-group-item-action" data-toggle="list" href="#inscrip" role="tab">Inscription</a>
-            </div>
-            
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane active" id="connection" role="tabpanel">
+  <div id="modal">
+    <p class="close">X</p>
+        <div class="row">
+            <div class="col-6 text-right"><button class="list btn btn-danger" href="#connection">Connexion</button></div>
+            <div class="col-6 text-left"><button class="list btn btn-danger" href="#inscription">Inscription</button></div>
+        </div>
+            <div id="text" class="pl-3">
+                <!-- connection -->
+                <div class="text active" id="connection">
                     <form>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Adresse Email</label>
@@ -520,7 +508,10 @@
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
                 </div>
-                <div class="tab-pane" id="inscrip" role="tabpanel">
+                <!-- fin connection -->
+
+                <!-- inscripiton -->
+                <div class="text" id="inscription">
                     <form>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Adresse Email</label>
@@ -538,28 +529,15 @@
                         <button type="submit" class="btn btn-primary mx-auto">Envoyer</button>
                       </form>
                 </div>
+                <!-- fin inscription -->
             </div>
-
-        </div>
-        <div class="modal-footer">
-            <p id="modalIcons" class="text-center">
+            <div class="footer" class="bg-danger w-100 text-center">
                 <i class="fab fa-facebook-square"></i>
                 <i class="fab fa-instagram"></i> 
                 <i class="fab fa-facebook-square"></i>
                 <i class="fab fa-instagram"></i> 
-            </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- mon modal -->
-
-  <div id="modal">
-    <p class="close">X</p>
-    Boinjour ! 
-    </div>
-
+            </div>
+    </div> 
         <!-- script jquery -->
         <script src="./node_modules/jquery/dist/jquery.js"></script>
         <!-- script bootstrap -->

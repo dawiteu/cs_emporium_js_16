@@ -185,21 +185,6 @@ carouselOp.forEach((e) =>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 window.onscroll = function() { scrollFunction() };
 
 function scrollFunction() {
@@ -279,6 +264,9 @@ window.onload = () =>{
 }
 
 
+
+
+/* modal */
 let close = () => {
     modall.style.visibility="hidden";
     modall.style.opacity="0"; 
@@ -311,11 +299,39 @@ btnMod.addEventListener("click", () => {
             }          
         }
     });
-}); 
+});
 
 
-document.body.addEventListener("click", (e) => {
-    
+/*  tab connection et inscription */
 
+const buttons = document.querySelectorAll(".list"); 
+const textess = document.querySelectorAll(".text"); 
+
+let textesToggles = () => { 
+    textess.forEach(e => {
+      e.style.display="none";
+    })
+  }
+  
+ textesToggles(); 
+
+ buttons.forEach((e) =>{
+    e.addEventListener("click", () =>{
+        let div = e.getAttribute('href').substring(1);
+        let findDiv = "#"+div; 
+        //console.log(findDiv);
+        textesToggles(); 
+        document.querySelector(findDiv).style.display="block";
+    });
+});
+
+textess.forEach((e) => {
+    if(e.classList.contains('active')){
+        let div = e.getAttribute('id');
+        let findDiv = "#"+div; 
+        //console.log(findDiv);
+        textesToggles(); 
+        document.querySelector(findDiv).style.display="block";
+    }
 });
 

@@ -16200,50 +16200,23 @@ div#discover button {
   font-size: 3rem;
 }
 
-.modal-dialog {
-  width: 50% !important;
-  max-width: 50% !important;
-}
-
-.modal-dialog .modal-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-dialog .modal-footer p i {
-  font-size: 2.5em;
-  margin: 2px;
-}
-
-.modal-dialog .modal-footer p i:nth-child(1) {
-  color: lightseagreen;
-}
-
-.modal-dialog .modal-footer p i:last-child {
-  color: yellow;
-}
-
-.list-group {
-  display: flex;
-  justify-content: center;
-  flex-direction: row !important;
-}
-
-.list-group a {
-  width: auto;
-  margin: 5px;
-  text-align: center;
-}
-
 /* modal  */
+.hide {
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1055;
+  position: fixed;
+}
+
 div#modal {
   width: 50%;
-  height: 30vh;
+  min-height: 30vh;
   background-color: #ccc;
   border: 2px dashed pink;
   position: fixed;
-  z-index: 1051;
+  z-index: 1100;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -16252,7 +16225,7 @@ div#modal {
   transition: visibility .4s, opacity .4s;
 }
 
-div#modal > p.close {
+div#modal p.close {
   position: absolute;
   top: 0;
   right: 0;
@@ -16260,29 +16233,50 @@ div#modal > p.close {
   padding: 5px;
   background-color: white;
   border-radius: 3px;
+  z-index: 1110;
 }
 
-div#modal > p.close:hover {
+div#modal p.close:hover {
   cursor: pointer;
 }
 
-.hide {
-  width: 100vw;
-  min-height: 100vh;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1050;
-  position: fixed;
+div#modal div.footer {
+  text-align: center;
+}
+
+div#modal div.footer i {
+  font-size: 2.5em;
+  padding: 5px;
+}
+
+div#modal div.footer i:nth-child(1) {
+  color: lightseagreen;
+}
+
+div#modal div.footer i:last-child {
+  color: yellow;
 }
 
 /* end modal */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  div#modal {
+    width: 70%;
+  }
+}
+
 @media (min-width: 768px) {
+  div#modal input {
+    max-width: 25%;
+  }
   #shop p {
     width: 50%;
   }
 }
 
 @media (max-width: 991.98px) {
+  div#modal {
+    width: 90%;
+  }
   #mycarouse div#carindicators {
     width: 50%;
   }
