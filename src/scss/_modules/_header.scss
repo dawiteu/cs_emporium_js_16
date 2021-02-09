@@ -12,13 +12,18 @@ header{
                 li.nav-item{
                     text-transform: uppercase;
                     font-weight: bold;
-
+                    a.nav-link{
+                        transition: color .3s;
+                    }
+                    a.nav-link:hover{
+                        color:green!important;
+                    }
                     label.switch{
                         position:relative;
                         padding-top:1em; // pour descendre au niveau; 
                         display:inline-block;
                         width: 60px;
-                        height: 34px;
+                        height: 40px;
                         input{
                             opacity:0; 
                             width:0; 
@@ -33,7 +38,8 @@ header{
                             }
 
                             &:checked + .slider::before{
-                                transform: translateX(26px);
+                                transform: translateX(24px);
+                                background-color: white;
                             }
                         }
                         .slider{
@@ -43,19 +49,19 @@ header{
                            left:0;
                            right: 0;
                            bottom:0; 
-                           background-color: #ccc;
+                           background-color: #000;
                            transition: .4s; 
-                           border-radius:34px; 
+                        //    border-radius:34px; 
 
                            &::before{
-                            border-radius:50%; 
+                            // border-radius:50%; 
 
                             position: absolute;
                             content: "";
-                            height: 26px;
-                            width: 26px;
+                            height: 30px;
+                            width: 30px;
                             left: 4px;
-                            bottom: 4px;
+                            bottom: 5px;
                             background-color: white;
                             -webkit-transition: .4s;
                             transition: .4s;
@@ -79,7 +85,7 @@ header{
     top:0!important; 
     margin-top:0px!important;
     width:100%; 
-    z-index:2225; 
+    z-index:1049; //2225; 
     background-color: white;
     box-shadow:0px 0px 20px 0px #3d3d3d; 
 }
@@ -91,7 +97,7 @@ header{
             flex-flow: row wrap!important;
             a{
                 &.navbar-brand{
-                    width:80%;
+                    width:100%;
                     text-align:center;  
                     margin:0; padding:0;  
                     align-self: flex-end;                 
@@ -115,6 +121,37 @@ header{
     }
 }
 
+
+@include media-breakpoint-only(md){
+    header{
+        nav{
+            position:relative;
+            margin-top:0;
+            a{
+                &.navbar-brand{
+                    width:100%!important;
+                }
+            }
+            button.navbar-toggler{
+                position:absolute;
+                right:0;
+                top:0;
+            }
+            
+            div.collapse{
+                ul.navbar-nav{
+                    margin:0; padding:0; 
+                    width:100%!important;
+                    display:flex;
+                    flex-direction: row;
+                    li.nav-item{
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }
+}
 @include media-breakpoint-down(md){
     header{
         nav{

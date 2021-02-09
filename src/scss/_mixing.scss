@@ -10,8 +10,11 @@ html {
 }
 
 body{
-    font-family: 'pop';
+    font-family: 'pop'!important;
     color:#2d2d2d;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s, visibility .5s;
 }
 
 .bold{

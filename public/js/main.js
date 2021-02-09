@@ -5,20 +5,39 @@ const navDul = document.querySelector("nav>div.collapse>ul");
 const divShop=document.querySelector("#shop");
 let inDarkMode = document.querySelector("input[name=inptdarkmode]"); 
 
+// modal 
+const btnMod = document.querySelector("button[href='#modal']"); 
+const modall = document.querySelector("div#modal"); 
+const modclos= document.querySelector("div#modal>p.close");
+
+let modalOpen = false; // 
+
+//
+
+
+// document.body.style.visibility="hidden";
+// document.body.style.opacity="0";
+// document.body.style.transition="opacity .5s, visibility .5s";
+
+
+
+
 //carousel 
 const carouselOp = document.querySelectorAll(".carouseloper"); 
 const divsliderr = document.querySelector('#slidesCarousel'); 
-const childWidth = divsliderr.firstElementChild.clientWidth;  
+const childWidth = divsliderr.firstElementChild.offsetWidth;  
 let timer; // apres ;)  
 
 
-console.log(inDarkMode);
 
+// dark mode ; 
 inDarkMode.addEventListener("click", () => {
     let body = document.body; 
     let navE = document.querySelectorAll("a.nav-link"); 
     let cTit = document.querySelectorAll(".card-title"); 
     let logo = document.querySelector("nav>a.navbar-brand>img"); 
+    let testim = document.querySelector("#testims");
+    let h3car = document.querySelector("section#mycarouse>h3");
 
     if(inDarkMode.checked){
         body.style.backgroundColor="#000";
@@ -26,17 +45,23 @@ inDarkMode.addEventListener("click", () => {
         navE.forEach((e) => { e.style.color="white" });
         cTit.forEach((e) => { e.style.color="#ccc" });
         logo.style.filter="invert(100%)";
+        testim.style.color="white"; 
+        h3car.style.color="white"; 
     }else{
-       body.style.backgroundColor="white"; 
-       nav.style.backgroundColor="white";
-       logo.style.filter="invert(0%)";
-       navE.forEach((e) => { e.style.color="rgba(0,0,0,.5)" });
-       cTit.forEach((e) => { e.style.color="rgba(0,0,0,.5)" });
+        h3car.style.color="rgba(0,0,0,.5)";
+        body.style.backgroundColor="white"; 
+        nav.style.backgroundColor="white";
+        logo.style.filter="invert(0%)";
+        testim.style.color="#212529"; 
+        navE.forEach((e) => { e.style.color="rgba(0,0,0,.5)" });
+        cTit.forEach((e) => { e.style.color="white" });
 
     }
 }); 
 
 
+
+//carousel 
 
 carouselOp.forEach((e) =>{ 
     e.addEventListener("click", () =>{ 
@@ -49,25 +74,23 @@ carouselOp.forEach((e) =>{
 
         switch(e.getAttribute('id')){
             case "#-2":
+                clearInterval(timer);
                 console.log('-2');
                 currentPos = divsliderr.scrollLeft; 
 
                 newPos = 0; //currentPos+divsliderr.clientWidth-2; //5 le margin
 
+                console.log(`cur: ${currentPos} `);
+
+
                 timer = setInterval(() => {
 
                     if(currentPos > newPos){
-                        divsliderr.scrollLeft+=1; 
+                        divsliderr.scrollLeft-=1; 
                         currentPos = divsliderr.scrollLeft; 
                         console.log(currentPos);
-                    }else if(currentPos >= newPos){
-                        console.log('egal'); 
-                        clearInterval(timer); 
                     }
-                    
-                    console.log('+ 2 ')
-                    if(currentPos >= newPos){
-                        console.log('stop +2');
+                    if(currentPos == 0){
                         clearInterval(timer); 
                     }
                 }, 3);
@@ -75,13 +98,14 @@ carouselOp.forEach((e) =>{
 
             case "#-1":
                 console.log('-1');
-                
+                clearInterval(timer);
+
                 currentPos = divsliderr.scrollLeft; 
                 console.log(`Child width : ${childWidth} `); 
-                newPos = childWidth-2; //5 le margin
+                newPos = (currentPos-childWidth)-2; //5 le margin
                 console.log(`Currr: ${currentPos} / new: ${newPos} `); 
 
-                //timer = setInterval(() => {
+                timer = setInterval(() => {
                     if(currentPos > newPos){
                         divsliderr.scrollLeft-=1; 
                         currentPos = divsliderr.scrollLeft;
@@ -89,10 +113,12 @@ carouselOp.forEach((e) =>{
                         console.log('fin!');
                         clearInterval(timer);
                     }
-                //}, 3);
+                }, 3);
             break;
 
-            case "#+1":
+            case "#+1": 
+                clearInterval(timer);
+                
                 console.log('+1'); 
 
                 currentPos = divsliderr.scrollLeft; 
@@ -119,27 +145,32 @@ carouselOp.forEach((e) =>{
 
             case "#+2": // on suppose qu'il veux toute une liste de nouveau elements (donc on affiche tout nouveau); 
                 console.log('+2');
-
+                clearInterval(timer);
+                
                 currentPos = divsliderr.scrollLeft; 
 
-                newPos = currentPos+divsliderr.clientWidth-2; //5 le margin
+                if(document.body.offsetWidth > 992 ){
+                   newPos = (divsliderr.offsetWidth)-45; 
+                }else{
+                    newPos = divsliderr.offsetWidth;
+                }
+                
 
                 timer = setInterval(() => {
 
                     if(currentPos < newPos){
                         divsliderr.scrollLeft+=1; 
-                        currentPos = divsliderr.scrollLeft; 
-                        console.log(currentPos);
-                    }else if(currentPos >= newPos){
+                        currentPos = divsliderr.scrollLeft;
+                    }else if(currentPos > newPos){
                         console.log('egal'); 
                         clearInterval(timer); 
                     }
                     
-                    console.log('+ 2 ')
-                    if(currentPos >= newPos){
-                        console.log('stop +2');
-                        clearInterval(timer); 
+                    if(currentPos == newPos){
+                        clearInterval(timer);
                     }
+                    console.log(`${currentPos} / ${newPos} `); 
+
                 }, 3);
             break; 
 
@@ -172,7 +203,12 @@ carouselOp.forEach((e) =>{
 window.onscroll = function() { scrollFunction() };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 90 || document.documentElement.scrollTop > 90) {
+
+
+    //console.log(document.documentElement.scrollTop);
+
+
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
 
     header.style.paddingTop=nav.offsetHeight+"px";
     nav.classList.add("sticky");
@@ -210,8 +246,76 @@ function scrollFunction() {
         navAbr.style.backgroundColor="transparent";
         navAbr.style.width="100%";
         
-      }
-
+    }
 
   }
+
+  const secTestim = document.querySelector("#testims");
+  const childs = secTestim.children; 
+
+  Array.from(childs).forEach((e) => {
+    e.style.visibility="hidden"; 
+    e.style.opacity="0";
+    e.style.transition="opacity .3s, visibility .3s";
+
+  });
+
+  if(document.documentElement.scrollTop >= 3000){ 
+      Array.from(childs).forEach((e) => {
+        e.style.visibility="visible"; 
+        e.style.opacity="1";
+      });
+  }
+
+
 }
+
+window.onload = () =>{
+    let x=setTimeout(() => {
+        document.body.style.visibility="visible";
+        document.body.style.opacity="1";
+        clearTimeout(x);
+    }, 650);
+}
+
+
+let close = () => {
+    modall.style.visibility="hidden";
+    modall.style.opacity="0"; 
+    let divH = document.querySelector("div.hide");
+    divH ? document.body.removeChild(divH) : null ; 
+    modalOpen=false;  
+    document.body.style.overflow="initial";    
+}
+
+
+btnMod.addEventListener("click", () => { 
+    modalOpen=true; 
+    let divHide = document.createElement("div"); 
+    divHide.classList.add("hide"); 
+    document.body.insertBefore(divHide, document.querySelector("header"));
+    modall.style.visibility="visible"; 
+    modall.style.opacity="1";
+    document.body.style.overflow="hidden"; 
+    let bodyHei = document.body.offsetHeight; 
+    divHide.style.height = bodyHei; 
+
+    modclos.addEventListener("click", () => {
+        close();
+    });  
+
+    divHide.addEventListener("click", (e) => {
+        if(modalOpen){
+            if(e.target == e.currentTarget){
+                close();   
+            }          
+        }
+    });
+}); 
+
+
+document.body.addEventListener("click", (e) => {
+    
+
+});
+

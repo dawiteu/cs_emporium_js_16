@@ -15842,12 +15842,20 @@ header nav div.collapse ul.navbar-nav li.nav-item {
   font-weight: bold;
 }
 
+header nav div.collapse ul.navbar-nav li.nav-item a.nav-link {
+  transition: color .3s;
+}
+
+header nav div.collapse ul.navbar-nav li.nav-item a.nav-link:hover {
+  color: green !important;
+}
+
 header nav div.collapse ul.navbar-nav li.nav-item label.switch {
   position: relative;
   padding-top: 1em;
   display: inline-block;
   width: 60px;
-  height: 34px;
+  height: 40px;
 }
 
 header nav div.collapse ul.navbar-nav li.nav-item label.switch input {
@@ -15865,7 +15873,8 @@ header nav div.collapse ul.navbar-nav li.nav-item label.switch input:focus + .sl
 }
 
 header nav div.collapse ul.navbar-nav li.nav-item label.switch input:checked + .slider::before {
-  transform: translateX(26px);
+  transform: translateX(24px);
+  background-color: white;
 }
 
 header nav div.collapse ul.navbar-nav li.nav-item label.switch .slider {
@@ -15875,19 +15884,17 @@ header nav div.collapse ul.navbar-nav li.nav-item label.switch .slider {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #000;
   transition: .4s;
-  border-radius: 34px;
 }
 
 header nav div.collapse ul.navbar-nav li.nav-item label.switch .slider::before {
-  border-radius: 50%;
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 30px;
+  width: 30px;
   left: 4px;
-  bottom: 4px;
+  bottom: 5px;
   background-color: white;
   transition: .4s;
 }
@@ -15901,7 +15908,7 @@ header nav div.collapse ul.navbar-nav li.nav-item:last-child button {
   top: 0 !important;
   margin-top: 0px !important;
   width: 100%;
-  z-index: 2225;
+  z-index: 1049;
   background-color: white;
   box-shadow: 0px 0px 20px 0px #3d3d3d;
 }
@@ -15912,7 +15919,7 @@ header nav div.collapse ul.navbar-nav li.nav-item:last-child button {
     flex-flow: row wrap !important;
   }
   header nav a.navbar-brand {
-    width: 80%;
+    width: 100%;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -15929,6 +15936,31 @@ header nav div.collapse ul.navbar-nav li.nav-item:last-child button {
   header nav div.collapse ul.navbar-nav li.nav-item {
     width: 100%;
     text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  header nav {
+    position: relative;
+    margin-top: 0;
+  }
+  header nav a.navbar-brand {
+    width: 100% !important;
+  }
+  header nav button.navbar-toggler {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  header nav div.collapse ul.navbar-nav {
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
+  }
+  header nav div.collapse ul.navbar-nav li.nav-item {
+    width: 100%;
   }
 }
 
@@ -16168,8 +16200,90 @@ div#discover button {
   font-size: 3rem;
 }
 
+.modal-dialog {
+  width: 50% !important;
+  max-width: 50% !important;
+}
+
+.modal-dialog .modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-dialog .modal-footer p i {
+  font-size: 2.5em;
+  margin: 2px;
+}
+
+.modal-dialog .modal-footer p i:nth-child(1) {
+  color: lightseagreen;
+}
+
+.modal-dialog .modal-footer p i:last-child {
+  color: yellow;
+}
+
+.list-group {
+  display: flex;
+  justify-content: center;
+  flex-direction: row !important;
+}
+
+.list-group a {
+  width: auto;
+  margin: 5px;
+  text-align: center;
+}
+
+/* modal  */
+div#modal {
+  width: 50%;
+  height: 30vh;
+  background-color: #ccc;
+  border: 2px dashed pink;
+  position: fixed;
+  z-index: 1051;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .4s, opacity .4s;
+}
+
+div#modal > p.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: red;
+  padding: 5px;
+  background-color: white;
+  border-radius: 3px;
+}
+
+div#modal > p.close:hover {
+  cursor: pointer;
+}
+
+.hide {
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  position: fixed;
+}
+
+/* end modal */
 @media (min-width: 768px) {
   #shop p {
+    width: 50%;
+  }
+}
+
+@media (max-width: 991.98px) {
+  #mycarouse div#carindicators {
     width: 50%;
   }
 }
@@ -16202,6 +16316,10 @@ footer ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+footer ul li {
+  line-height: 2.3;
 }
 
 footer ul li a {
@@ -16246,8 +16364,11 @@ html {
 }
 
 body {
-  font-family: 'pop';
+  font-family: "pop" !important;
   color: #2d2d2d;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .5s, visibility .5s;
 }
 
 .bold {
