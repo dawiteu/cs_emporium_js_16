@@ -3,13 +3,39 @@ const nav    = document.querySelector("nav");
 const navAbr = document.querySelector("nav>a.navbar-brand"); 
 const navDul = document.querySelector("nav>div.collapse>ul"); 
 const divShop=document.querySelector("#shop");
-
+let inDarkMode = document.querySelector("input[name=inptdarkmode]"); 
 
 //carousel 
 const carouselOp = document.querySelectorAll(".carouseloper"); 
 const divsliderr = document.querySelector('#slidesCarousel'); 
 const childWidth = divsliderr.firstElementChild.clientWidth;  
 let timer; // apres ;)  
+
+
+console.log(inDarkMode);
+
+inDarkMode.addEventListener("click", () => {
+    let body = document.body; 
+    let navE = document.querySelectorAll("a.nav-link"); 
+    let cTit = document.querySelectorAll(".card-title"); 
+    let logo = document.querySelector("nav>a.navbar-brand>img"); 
+
+    if(inDarkMode.checked){
+        body.style.backgroundColor="#000";
+        nav.style.backgroundColor="#000";
+        navE.forEach((e) => { e.style.color="white" });
+        cTit.forEach((e) => { e.style.color="#ccc" });
+        logo.style.filter="invert(100%)";
+    }else{
+       body.style.backgroundColor="white"; 
+       nav.style.backgroundColor="white";
+       logo.style.filter="invert(0%)";
+       navE.forEach((e) => { e.style.color="rgba(0,0,0,.5)" });
+       cTit.forEach((e) => { e.style.color="rgba(0,0,0,.5)" });
+
+    }
+}); 
+
 
 
 carouselOp.forEach((e) =>{ 
@@ -151,6 +177,12 @@ function scrollFunction() {
     header.style.paddingTop=nav.offsetHeight+"px";
     nav.classList.add("sticky");
 
+    if(inDarkMode.checked){ 
+        nav.style.backgroundColor="#000";
+    }else{
+        nav.style.backgroundColor="white";
+    }
+
     if(document.body.clientWidth >= 992){
         
         navAbr.style.width="25%";
@@ -167,7 +199,7 @@ function scrollFunction() {
     header.style.paddingTop="5px";
     nav.classList.remove("sticky"); 
 
-      if(document.body.clientWidth >= 992){
+    if(document.body.clientWidth >= 992){
         navDul.style.width="50%";
         navDul.style.marginLeft="auto";
         navDul.style.marginRight="auto";

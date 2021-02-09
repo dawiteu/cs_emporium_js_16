@@ -25,11 +25,11 @@ header{
                             height: 0;
 
                             &:checked + .slider{
-                                background-color: #2d2d2d;
+                                background-color: #3d3d3d;
                             }
 
                             &:focus + .slider{
-                                box-shadow: 0 0 1px #2d2d2d;
+                                box-shadow: 0 0 1px #3d3d3d;
                             }
 
                             &:checked + .slider::before{
@@ -81,7 +81,7 @@ header{
     width:100%; 
     z-index:2225; 
     background-color: white;
-     box-shadow:0px 0px 20px 0px #2d2d2d; 
+    box-shadow:0px 0px 20px 0px #3d3d3d; 
 }
 
 @include media-breakpoint-up(md) { 
