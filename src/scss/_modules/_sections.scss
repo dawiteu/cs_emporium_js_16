@@ -56,14 +56,62 @@ div#recentProducts{
 
     div.card-img{
         overflow: hidden;
+        position:relative; 
+
+        .vdet{
+            position:absolute;
+            bottom:0;
+            left:0;  
+            width:calc(100% / 2); 
+            height:15%;
+            background-color: #2d2d2d;
+            color:white; 
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            opacity:0.8;
+            transition: height 4s; 
+        }
+        .atc{
+            position:absolute;
+            bottom:0;
+            right:0;  
+            width:calc(100% / 2); 
+            height:15%;
+            background-color: red;
+            color:white; 
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            opacity:0.8; 
+            transition: height 3s;
+        }
+        
+        .add{ display:none; height:5%; transition:all 4s; }
+        .add:hover { display:block; height:20%; cursor:pointer; }
+
         img{
             transition: all .5s;
             &:hover{
                 cursor: pointer;
                 transform: scale(1.1);
+                & + .add{
+                    display:block;
+                    height: 20%;
+                }
+                & + .vdet{
+                    height:20%;
+                }
+                & + .atc{
+                    height:20%;
+                } /*  ca marche pas a 100 % m,ais sa mere */
             }
         }
+
+
     }
+
+    
 }
 div#recentProducts,#mycarouse{
     .card{ 

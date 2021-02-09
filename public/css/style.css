@@ -15989,6 +15989,49 @@ div#firstImgs div.card div.card-img-overlay h5:after {
 
 div#recentProducts div.card-img {
   overflow: hidden;
+  position: relative;
+}
+
+div#recentProducts div.card-img .vdet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% / 2);
+  height: 15%;
+  background-color: #2d2d2d;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  transition: height 4s;
+}
+
+div#recentProducts div.card-img .atc {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: calc(100% / 2);
+  height: 15%;
+  background-color: red;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  transition: height 3s;
+}
+
+div#recentProducts div.card-img .add {
+  display: none;
+  height: 5%;
+  transition: all 4s;
+}
+
+div#recentProducts div.card-img .add:hover {
+  display: block;
+  height: 20%;
+  cursor: pointer;
 }
 
 div#recentProducts div.card-img img {
@@ -15998,6 +16041,20 @@ div#recentProducts div.card-img img {
 div#recentProducts div.card-img img:hover {
   cursor: pointer;
   transform: scale(1.1);
+  /*  ca marche pas a 100 % m,ais sa mere */
+}
+
+div#recentProducts div.card-img img:hover + .add {
+  display: block;
+  height: 20%;
+}
+
+div#recentProducts div.card-img img:hover + .vdet {
+  height: 20%;
+}
+
+div#recentProducts div.card-img img:hover + .atc {
+  height: 20%;
 }
 
 div#recentProducts .card, #mycarouse .card {
