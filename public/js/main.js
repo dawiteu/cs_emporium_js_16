@@ -146,26 +146,40 @@ carouselOp.forEach((e) =>{
 window.onscroll = function() { scrollFunction() };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+  if (document.body.scrollTop > 90 || document.documentElement.scrollTop > 90) {
 
     header.style.paddingTop=nav.offsetHeight+"px";
-    navAbr.style.width="25%";
-    navAbr.style.backgroundColor="yellow";
-    document.querySelector("nav").classList.add("sticky"); 
-    divShop.style.marginTop="6rem!important"; 
+    nav.classList.add("sticky");
 
-    navDul.style.marginLeft="0";
-    navDul.style.marginRight="0";
+    if(document.body.clientWidth >= 992){
+        
+        navAbr.style.width="25%";
+        // navAbr.style.alignSelf="flex-end";
+        
+        divShop.style.marginTop="6rem!important"; 
+
+        navDul.style.marginLeft="0";
+        navDul.style.marginRight="0";
+        navDul.style.width="67%";
+    }
+
   } else {
-    navDul.style.marginLeft="auto";
-    navDul.style.marginRight="auto";
-
-    
-    // navDul.style.width="50%";
     header.style.paddingTop="5px";
-    navAbr.style.backgroundColor="transparent";
-    navAbr.style.width="100%";
     nav.classList.remove("sticky"); 
+
+      if(document.body.clientWidth >= 992){
+        navDul.style.width="50%";
+        navDul.style.marginLeft="auto";
+        navDul.style.marginRight="auto";
+
+        
+        // navDul.style.width="50%";
+        
+        navAbr.style.backgroundColor="transparent";
+        navAbr.style.width="100%";
+        
+      }
+
 
   }
 }

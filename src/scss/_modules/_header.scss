@@ -8,7 +8,7 @@ header{
         div.collapse{
             ul.navbar-nav{
                 width:100%;
-                background-color: red;
+                // background-color: red;
                 li.nav-item{
                     text-transform: uppercase;
                     font-weight: bold;
@@ -25,11 +25,11 @@ header{
                             height: 0;
 
                             &:checked + .slider{
-                                background-color: #2196F3;
+                                background-color: #2d2d2d;
                             }
 
                             &:focus + .slider{
-                                box-shadow: 0 0 1px #2196F3;
+                                box-shadow: 0 0 1px #2d2d2d;
                             }
 
                             &:checked + .slider::before{
@@ -81,8 +81,7 @@ header{
     width:100%; 
     z-index:2225; 
     background-color: white;
-    border-bottom:1px solid black; 
-    box-shadow:0px 0px 2px 5px #000; 
+     box-shadow:0px 0px 20px 0px #2d2d2d; 
 }
 
 @include media-breakpoint-up(md) { 
@@ -92,15 +91,15 @@ header{
             flex-flow: row wrap!important;
             a{
                 &.navbar-brand{
-                    width:100%;
-                    text-align:center;                     
+                    width:80%;
+                    text-align:center;  
+                    margin:0; padding:0;  
+                    align-self: flex-end;                 
                 }
 
             }
             div.collapse{
-                // width:auto!important;
-                background-color: #ccc;
-                margin-top:50px; 
+                 margin-top:10px; 
                 ul.navbar-nav{
                     width:50%; 
                     margin-left: auto;
@@ -116,6 +115,32 @@ header{
     }
 }
 
+@include media-breakpoint-down(md){
+    header{
+        nav{
+            a{
+                &.navbar-brand{
+                    width:80%;
+                }
+            }
+
+            div.collapse{
+                ul.navbar-nav{
+                    li.nav-item{
+                        text-align: right;
+                        &:last-child{
+                            margin:0 auto; 
+                            button{
+                                padding-left:5px!important;
+                                padding-right:5px!important; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 // h1{
 //     font-family: 'pop-light';
