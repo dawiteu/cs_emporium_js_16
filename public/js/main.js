@@ -38,7 +38,7 @@ inDarkMode.addEventListener("click", () => {
     let logo = document.querySelector("nav>a.navbar-brand>img"); 
     let testim = document.querySelector("#testims");
     let h3car = document.querySelector("section#mycarouse>h3");
-
+    
     if(inDarkMode.checked){
         body.style.backgroundColor="#000";
         nav.style.backgroundColor="#000";
@@ -47,7 +47,11 @@ inDarkMode.addEventListener("click", () => {
         logo.style.filter="invert(100%)";
         testim.style.color="white"; 
         h3car.style.color="white"; 
+        nav.classList.remove("navbar-light");
+        nav.classList.add("navbar-dark");
     }else{
+        nav.classList.add("navbar-light");
+        nav.classList.remove("navbar-dark");
         h3car.style.color="rgba(0,0,0,.5)";
         body.style.backgroundColor="white"; 
         nav.style.backgroundColor="white";
