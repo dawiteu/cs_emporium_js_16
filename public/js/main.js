@@ -34,10 +34,10 @@ let timer; // apres ;)
 inDarkMode.addEventListener("click", () => {
     let body = document.body; 
     let navE = document.querySelectorAll("a.nav-link"); 
-    let cTit = document.querySelectorAll(".card-title"); 
+    let cTit = document.querySelectorAll(".card-body .card-title"); 
     let logo = document.querySelector("nav>a.navbar-brand>img"); 
     let testim = document.querySelector("#testims");
-    let h3car = document.querySelector("section#mycarouse>h3");
+    let h3car = document.querySelectorAll("h3");
     
     if(inDarkMode.checked){
         body.style.backgroundColor="#000";
@@ -46,19 +46,19 @@ inDarkMode.addEventListener("click", () => {
         cTit.forEach((e) => { e.style.color="#ccc" });
         logo.style.filter="invert(100%)";
         testim.style.color="white"; 
-        h3car.style.color="white"; 
+        h3car.forEach(e => e.style.color="white"); 
         nav.classList.remove("navbar-light");
         nav.classList.add("navbar-dark");
     }else{
         nav.classList.add("navbar-light");
         nav.classList.remove("navbar-dark");
-        h3car.style.color="rgba(0,0,0,.5)";
+        h3car.forEach(e => e.style.color="rgba(0,0,0,.5)");
         body.style.backgroundColor="white"; 
         nav.style.backgroundColor="white";
         logo.style.filter="invert(0%)";
         testim.style.color="#212529"; 
         navE.forEach((e) => { e.style.color="rgba(0,0,0,.5)" });
-        cTit.forEach((e) => { e.style.color="white" });
+        cTit.forEach((e) => { e.style.color="#2d2d2d" });
 
     }
 }); 
@@ -79,13 +79,9 @@ carouselOp.forEach((e) =>{
         switch(e.getAttribute('id')){
             case "#-2":
                 clearInterval(timer);
-                console.log('-2');
                 currentPos = divsliderr.scrollLeft; 
 
-                newPos = 0; //currentPos+divsliderr.clientWidth-2; //5 le margin
-
-                console.log(`cur: ${currentPos} `);
-
+                newPos = 0;
 
                 timer = setInterval(() => {
 
@@ -101,11 +97,9 @@ carouselOp.forEach((e) =>{
             break;
 
             case "#-1":
-                console.log('-1');
                 clearInterval(timer);
 
                 currentPos = divsliderr.scrollLeft; 
-                console.log(`Child width : ${childWidth} `); 
                 newPos = (currentPos-childWidth)-2; //5 le margin
                 console.log(`Currr: ${currentPos} / new: ${newPos} `); 
 
@@ -123,14 +117,12 @@ carouselOp.forEach((e) =>{
             case "#+1": 
                 clearInterval(timer);
                 
-                console.log('+1'); 
-
                 currentPos = divsliderr.scrollLeft; 
 
-                newPos = currentPos+childWidth-2; //5 le margin
+                newPos = currentPos+childWidth-1; //1 le margin
 
-                console.log(`Child width : ${childWidth} `); 
-                console.log(`Currr: ${currentPos} / new: ${newPos} `); 
+                //console.log(`Child width : ${childWidth} `); 
+                //console.log(`Currr: ${currentPos} / new: ${newPos} `); 
 
                 timer = setInterval(() => {
 
@@ -328,7 +320,8 @@ let textesToggles = () => {
         document.querySelector(findDiv).style.display="block";
     });
 });
-
+ 
+/*  */
 textess.forEach((e) => {
     if(e.classList.contains('active')){
         let div = e.getAttribute('id');

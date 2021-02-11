@@ -15843,11 +15843,12 @@ header nav div.collapse ul.navbar-nav li.nav-item {
 }
 
 header nav div.collapse ul.navbar-nav li.nav-item a.nav-link {
-  transition: color .3s;
+  transition: color .3s, border-bottom .5s;
 }
 
 header nav div.collapse ul.navbar-nav li.nav-item a.nav-link:hover {
-  color: green !important;
+  color: #55C1FF !important;
+  border-bottom: 1px solid #102E4A;
 }
 
 header nav div.collapse ul.navbar-nav li.nav-item label.switch {
@@ -16205,7 +16206,7 @@ div#discover button {
   width: 100vw;
   min-height: 100vh;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 1055;
   position: fixed;
 }
