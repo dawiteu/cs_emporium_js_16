@@ -8,7 +8,6 @@ header{
         div.collapse{
             ul.navbar-nav{
                 width:100%;
-                // background-color: red;
                 li.nav-item{
                     text-transform: uppercase;
                     font-weight: bold;
@@ -52,11 +51,7 @@ header{
                            bottom:0; 
                            background-color: #000;
                            transition: .4s; 
-                        //    border-radius:34px; 
-
                            &::before{
-                            // border-radius:50%; 
-
                             position: absolute;
                             content: "";
                             height: 30px;
@@ -153,6 +148,7 @@ header{
         }
     }
 }
+
 @include media-breakpoint-down(md){
     header{
         nav{
