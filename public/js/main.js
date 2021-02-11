@@ -21,7 +21,8 @@ let modalOpes = 0; // test
 //carousel 
 const carouselOp = document.querySelectorAll(".carouseloper"); 
 const divsliderr = document.querySelector('#slidesCarousel'); 
-const childWidth = divsliderr.firstElementChild.offsetWidth;  
+let childWidth = divsliderr.firstElementChild.offsetWidth;
+//console.log(childWidth);   
 let timer; // apres ;)  
 
 // dark mode ; 
@@ -63,7 +64,9 @@ carouselOp.forEach((e) => {
     e.addEventListener("click", () =>{ 
         //alert(e.getAttribute('id')); 
         //console.log(childWidth); 
-
+        let divSlWidth = divsliderr.offsetWidth; 
+        console.log(divSlWidth);
+        childWidth = divsliderr.firstElementChild.offsetWidth;
         let currentPos = divsliderr.scrollLeft; 
         console.log(currentPos); 
         let newPos; 
@@ -109,7 +112,7 @@ carouselOp.forEach((e) => {
             case "#+1": 
                 clearInterval(timer);
                 currentPos = divsliderr.scrollLeft; 
-                newPos = currentPos+childWidth-1; //1 le margin
+                newPos = currentPos+childWidth; //1 le margin
                 //console.log(`Child width : ${childWidth} `); 
                 //console.log(`Currr: ${currentPos} / new: ${newPos} `); 
                 timer = setInterval(() => {
@@ -131,9 +134,9 @@ carouselOp.forEach((e) => {
                 clearInterval(timer);
                 currentPos = divsliderr.scrollLeft; 
                 if(document.body.offsetWidth > 992 ){
-                   newPos = (divsliderr.offsetWidth)-45; 
+                   newPos = (divSlWidth)-45; 
                 }else{
-                    newPos = divsliderr.offsetWidth;
+                    newPos = divSlWidth;
                 }
                 timer = setInterval(() => {
                     if(currentPos < newPos){
